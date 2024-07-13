@@ -53,27 +53,49 @@ YouTube Downloader is a Django-based web application that allows users to downlo
 ```
 youtube_downloader/
 │
+└── youtube_downloader/
+    ├── downloaded_videos/       # Directory for storing downloaded videos
+    ├── videos/                  # Django application directory
+    │   ├── __pycache__/
+    │   ├── migrations/          # Database migrations
+    │   ├── templates/           # HTML templates
+    │   ├── __init__.py
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── models.py
+    │   ├── tests.py
+    │   ├── urls.py
+    │   └── views.py
+    ├── youtube_downloader/      # Main Django project directory
+    │   ├── __pycache__/
+    │   ├── __init__.py
+    │   ├── asgi.py
+    │   ├── settings.py
+    │   ├── urls.py
+    │   └── wsgi.py
+    ├── db.sqlite3               # SQLite database file
+    └── manage.py                # Django management script
 ├── youtube_env/            # Virtual environment
-├── manage.py               # Django management script
 ├── requirements.txt        # Python dependencies
-├── README.md               # Project README
-└── my_app/                 # Django application directory
-    ├── migrations/         # Database migrations
-    ├── static/             # Static files (CSS, JS, images)
-    ├── templates/          # HTML templates
-    ├── __init__.py
-    ├── admin.py
-    ├── apps.py
-    ├── models.py
-    ├── tests.py
-    ├── urls.py
-    └── views.py
+└── README.md               # Project README
+
+
+
 ```
 
 ## Dependencies
 
 - **Django**: The web framework used for the project.
 - **pytube**: A lightweight, dependency-free Python library (and command-line utility) for downloading YouTube videos.
+
+
+## Known Issues
+
+### Cipher Issue in `pytube`
+
+There is a known issue with the cipher file in the `pytube` library. This can cause errors when attempting to download videos. The `pytube` maintainers are aware of this and are working on a fix. In the meantime, a workaround is to manually patch the cipher file.
+
+To manually patch the cipher file, locate the `cipher.py` file in your `pytube` installation and apply the necessary changes as described in the `pytube` GitHub issues section [https://github.com/pytube/pytube/issues/1954](regex issue) .
 
 ## Contributing
 
